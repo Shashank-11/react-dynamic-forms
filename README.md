@@ -1,45 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dynamic react forms
 
-## Available Scripts
+## Overview
+This is a React application.
+With the aim of creating dynamic forms.
 
-In the project directory, you can run:
+## Building the app
+```
+Used Create-react-app for boilerplate
+npm install -g create-react-app
+```
 
-### `npm start`
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> install all the dependencies with
+```
+npm install
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+```
+npm start
+```
+localhost:3000
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
+- React
+- Styled Components
+- Node express
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### React
+I am using a standard React setup.
+Data is served from NodeJS APIs and consumed using the Superagent HTTP client.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Styled-components
+Styling for the app is done using Styled components.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Components are purely the reusable parts of the site, not whole pages.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Containers are whole pages of the site, for example the Home Page.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### NodeJS
+The Node app is purely focused on supporting the application.
 
-## Learn More
+### Node Exprees
+The Node express is used to make server side API calls.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Improvement scope
+Write more unit test cases and increase the coverage.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# react-dynamic-forms
