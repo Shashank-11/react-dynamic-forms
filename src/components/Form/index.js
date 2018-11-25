@@ -113,7 +113,7 @@ class Form  extends Component {
             </div>
            }
           <FormButton>
-            Send Email
+            Submit
           </FormButton>
         </form>
       </EmailForm> 

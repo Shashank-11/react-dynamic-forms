@@ -33,7 +33,7 @@ const isNumeric = (val) => {
 //validation constraints
 export const constraints = {  
   fullName: isPresent('name'),
-  guardianName: isPresent('name'),
+  guardianName: isPresent('guardian name'),
   mobileNumber: isNumeric('mobile number'),
   homeNumber: isNumeric('home number'),
   guardianContact: isNumeric('guardian number'),
