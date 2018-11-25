@@ -28,12 +28,11 @@ localhost:3000
 ## Tech Stack
 - React
 - Styled Components
-- Node express
 
 
 ### React
 I am using a standard React setup.
-Data is served from NodeJS APIs and consumed using the Superagent HTTP client.
+
 
 
 ### Styled-components
@@ -43,11 +42,6 @@ Components are purely the reusable parts of the site, not whole pages.
 
 Containers are whole pages of the site, for example the Home Page.
 
-### NodeJS
-The Node app is purely focused on supporting the application.
-
-### Node Exprees
-The Node express is used to make server side API calls.
 
 ### Improvement scope
 Write more unit test cases and increase the coverage.
