@@ -1,0 +1,80 @@
+import unittest
+from unittest.mock import MagicMock
+
+# Assuming your filter_metric_keys function is defined in a module called my_module
+from my_module import filter_metric_keys
+
+class TestFilterMetricKeys(unittest.TestCase):
+
+    def test_filter_metric_keys(self):
+        # Mocking the redis_client.scan_iter method
+        redis_client_mock = MagicMock()
+        redis_client_mock.scan_iter.return_value = [b'key1', b'key2']
+
+        # Example universe_id_list
+        universe_id_list = ['123', '456']
+
+        # Calling the function with the mocked redis_client.scan_iter
+        result = filter_metric_keys(universe_id_list, redis_client_mock.scan_iter)
+
+        # Asserting that the mock method was called with the correct arguments
+        redis_client_mock.scan_iter.assert_any_call(match='*:123:*')
+        redis_client_mock.scan_iter.assert_any_call(match='*:456:*')
+
+        # Asserting the result
+        self.assertEqual(result, ['key1', 'key2'])
+
+    def test_filter_metric_keys_empty_universe_id_list(self):
+        # Mocking the redis_client.scan_iter method
+        redis_client_mock = MagicMock()
+
+        # Example empty universe_id_list
+        universe_id_list = []
+
+        # Calling the function with the mocked redis_client.scan_iter
+        result = filter_metric_keys(universe_id_list, redis_client_mock.scan_iter)
+
+        # Asserting that scan_iter should not be called
+        redis_client_mock.scan_iter.assert_not_called()
+
+        # Asserting the result should be an empty list
+        self.assertEqual(result, [])
+
+    def test_filter_metric_keys_no_matches(self):
+        # Mocking the redis_client.scan_iter method
+        redis_client_mock = MagicMock()
+        redis_client_mock.scan_iter.return_value = []
+
+        # Example universe_id_list
+        universe_id_list = ['123', '456']
+
+        # Calling the function with the mocked redis_client.scan_iter
+        result = filter_metric_keys(universe_id_list, redis_client_mock.scan_iter)
+
+        # Asserting that the mock method was called with the correct arguments
+        redis_client_mock.scan_iter.assert_any_call(match='*:123:*')
+        redis_client_mock.scan_iter.assert_any_call(match='*:456:*')
+
+        # Asserting the result should be an empty list
+        self.assertEqual(result, [])
+
+    def test_filter_metric_keys_key_decoding(self):
+        # Mocking the redis_client.scan_iter method
+        redis_client_mock = MagicMock()
+        redis_client_mock.scan_iter.return_value = [b'key1', b'key2']
+
+        # Example universe_id_list
+        universe_id_list = ['123', '456']
+
+        # Calling the function with the mocked redis_client.scan_iter
+        result = filter_metric_keys(universe_id_list, redis_client_mock.scan_iter)
+
+        # Asserting that the keys are correctly decoded
+        redis_client_mock.scan_iter.assert_any_call(match='*:123:*')
+        redis_client_mock.scan_iter.assert_any_call(match='*:456:*')
+        self.assertEqual(result, ['key1', 'key2'])
+        for key in result:
+            self.assertIsInstance(key, str)
+
+if __name__ == '__main__':
+    unittest.main()
